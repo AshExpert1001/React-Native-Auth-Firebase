@@ -19,7 +19,7 @@ export class Home extends Component{
           email:user.email
         })
       }else{
-        this.SingOut()
+        this.props.navigation.navigate('SignIn')
       }
     })
   }
@@ -28,9 +28,6 @@ export class Home extends Component{
   }
   SingOut(){
     firebase.auth().signOut()
-    .then(()=>{
-      this.props.navigation.replace('SignIn')
-    })
     .catch(error=>{
       Alert.alert(error.message)
     })
@@ -54,9 +51,9 @@ export class Splash extends Component{
   componentDidMount(){
     this.unSuscribeAuth = firebase.auth().onAuthStateChanged(user=>{
       if(user){
-        this.props.navigation.push('Home')
+        this.props.navigation.navigate('Home')
       }else{
-        this.props.navigation.push('SignIn')
+        this.props.navigation.navigate('SignIn')
       }
     })
   }
@@ -81,7 +78,7 @@ export class SignIn extends Component{
       console.log(this.state)
       firebase.auth().signInWithEmailAndPassword(email,pass)
       .then(()=>{
-        this.props.navigation.replace('Home')
+        this.props.navigation.navigate('Home')
       })
       .catch(error=>{
         Alert.alert(error.message)
@@ -114,7 +111,7 @@ export class SignIn extends Component{
       />
     <TouchableOpacity
         style={styles.touch}
-        onPress={() => this.props.navigation.push("CreateAccount")}
+        onPress={() => this.props.navigation.navigate("CreateAccount")}
     >
      <Text>Create Account</Text>
     </TouchableOpacity>

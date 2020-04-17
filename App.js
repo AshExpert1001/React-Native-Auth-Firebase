@@ -41,18 +41,7 @@ const App = () => (
   </NavigationContainer>
 );
 
-
 export default App;
-
-// class App extends Component{
-//   render(){
-//     return (
-//       <View style={styles.container}>
-//         <CreateAccount/>
-//       </View>
-//     );
-//   }
-// }
 
 const styles = StyleSheet.create({
   container: {
